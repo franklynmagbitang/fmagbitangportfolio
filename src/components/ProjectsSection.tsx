@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
-import { Plus, Upload, X, FileText, Image, BarChart3, Trash2 } from "lucide-react";
+import { Plus, Upload, X, FileText, Image, BarChart3, Trash2, Download } from "lucide-react";
 
 interface Project {
   id: string;
@@ -9,6 +9,7 @@ interface Project {
   tools: string;
   preview?: string;
   fileName?: string;
+  downloadUrl?: string;
 }
 
 const ProjectsSection = () => {
@@ -16,9 +17,20 @@ const ProjectsSection = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const defaultProjects: Project[] = [
+    {
+      id: "default-frankscarsph",
+      title: "FrankCarsPh",
+      description: "Power BI dashboard project for automotive data analysis and reporting.",
+      tools: "Power BI",
+      fileName: "FrankCarsPh.pbix",
+      downloadUrl: "/projects/FrankCarsPh.pbix",
+    },
+  ];
+
   const [projects, setProjects] = useState<Project[]>(() => {
     const saved = localStorage.getItem("portfolio-projects");
-    return saved ? JSON.parse(saved) : [];
+    return saved ? JSON.parse(saved) : defaultProjects;
   });
   const [showForm, setShowForm] = useState(false);
   const [dragOver, setDragOver] = useState(false);
@@ -221,10 +233,23 @@ const ProjectsSection = () => {
                     </div>
                   )}
                   {project.fileName && (
-                    <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
-                      <Image className="w-3 h-3" />
-                      {project.fileName}
-                    </p>
+                    <div className="flex items-center justify-between mt-2">
+                      <p className="text-xs text-muted-foreground flex items-center gap-1">
+                        <Image className="w-3 h-3" />
+                        {project.fileName}
+                      </p>
+                      {project.downloadUrl && (
+                        <a
+                          href={project.downloadUrl}
+                          download={project.fileName}
+                          className="text-xs text-primary hover:text-primary/80 flex items-center gap-1 transition-colors"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <Download className="w-3 h-3" />
+                          Download
+                        </a>
+                      )}
+                    </div>
                   )}
                 </div>
               </motion.div>
