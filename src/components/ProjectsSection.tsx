@@ -233,23 +233,21 @@ const ProjectsSection = () => {
                     </div>
                   )}
                   {project.fileName && (
-                    <div className="flex items-center justify-between mt-2">
-                      <p className="text-xs text-muted-foreground flex items-center gap-1">
-                        <Image className="w-3 h-3" />
-                        {project.fileName}
-                      </p>
-                      {project.downloadUrl && (
-                        <a
-                          href={project.downloadUrl}
-                          download={project.fileName}
-                          className="text-xs text-primary hover:text-primary/80 flex items-center gap-1 transition-colors"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <Download className="w-3 h-3" />
-                          Download
-                        </a>
-                      )}
-                    </div>
+                    <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
+                      <Image className="w-3 h-3" />
+                      {project.fileName}
+                    </p>
+                  )}
+                  {project.downloadUrl && (
+                    <a
+                      href={project.downloadUrl}
+                      download={project.fileName}
+                      onClick={(e) => e.stopPropagation()}
+                      className="mt-3 inline-flex items-center gap-2 w-full justify-center px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-all glow-border"
+                    >
+                      <Download className="w-4 h-4" />
+                      Download Project
+                    </a>
                   )}
                 </div>
               </motion.div>
