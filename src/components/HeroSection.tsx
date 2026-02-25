@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, FolderOpen, Mail } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import profilePic from "@/assets/profile-pic.jpg";
 
 const HeroSection = () => {
   return (
@@ -33,6 +34,17 @@ const HeroSection = () => {
             className="inline-block mb-6 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-mono"
           >
             📊 Data Analyst | Reporting & Insights Specialist
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="mb-8"
+          >
+            <div className="w-36 h-36 md:w-44 md:h-44 mx-auto rounded-full overflow-hidden border-2 border-primary/40 shadow-[0_0_30px_hsl(var(--primary)/0.3)]">
+              <img src={profilePic} alt="Franklyn Magbitang" className="w-full h-full object-cover" />
+            </div>
           </motion.div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
