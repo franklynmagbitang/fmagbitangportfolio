@@ -17,17 +17,33 @@ const CertificatesSection = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const defaultCertificates: Certificate[] = [];
+  const defaultCertificates: Certificate[] = [
+    {
+      id: "default-ibm-dev-day-bob",
+      title: "IBM Dev Day - Bob Edition",
+      description: "Certificate of participation in IBM Dev Day (Bob Edition).",
+      issuer: "IBM",
+      fileName: "IBM_Dev_Day_Bob_Edition_Certificate_Franklyn_Magbitang.pdf",
+      downloadUrl: "/certificates/IBM_Dev_Day_Bob_Edition_Certificate_Franklyn_Magbitang.pdf",
+    },
+  ];
 
   const [certificates, setCertificates] = useState<Certificate[]>(() => {
     const saved = localStorage.getItem("portfolio-certificates");
-    return saved ? JSON.parse(saved) : defaultCertificates;
+    if (!saved) return defaultCertificates;
+    const parsed: Certificate[] = JSON.parse(saved);
+    // Ensure default IBM certificate is always present
+    if (!parsed.find((c) => c.id === "default-ibm-dev-day-bob")) {
+      return [...defaultCertificates, ...parsed];
+    }
+    return parsed;
   });
   const [showForm, setShowForm] = useState(false);
   const [dragOver, setDragOver] = useState(false);
   const [form, setForm] = useState({ title: "", description: "", issuer: "" });
   const [previewFile, setPreviewFile] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string>("");
+  const [fileData, setFileData] = useState<string | null>(null);
 
   const save = (c: Certificate[]) => {
     setCertificates(c);
@@ -36,13 +52,17 @@ const CertificatesSection = () => {
 
   const handleFile = useCallback((file: File) => {
     setFileName(file.name);
-    if (file.type.startsWith("image/")) {
-      const reader = new FileReader();
-      reader.onload = (e) => setPreviewFile(e.target?.result as string);
-      reader.readAsDataURL(file);
-    } else {
-      setPreviewFile(null);
-    }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const result = e.target?.result as string;
+      setFileData(result);
+      if (file.type.startsWith("image/")) {
+        setPreviewFile(result);
+      } else {
+        setPreviewFile(null);
+      }
+    };
+    reader.readAsDataURL(file);
   }, []);
 
   const handleDrop = useCallback(
@@ -64,11 +84,13 @@ const CertificatesSection = () => {
       issuer: form.issuer,
       preview: previewFile || undefined,
       fileName: fileName || undefined,
+      downloadUrl: fileData || undefined,
     };
     save([...certificates, newCertificate]);
     setForm({ title: "", description: "", issuer: "" });
     setPreviewFile(null);
     setFileName("");
+    setFileData(null);
     setShowForm(false);
   };
 
