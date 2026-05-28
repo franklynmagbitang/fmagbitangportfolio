@@ -26,11 +26,24 @@ const ProjectsSection = () => {
       fileName: "FrankCarsPh.pbix",
       downloadUrl: "/projects/FrankCarsPh.pbix",
     },
+    {
+      id: "default-wfm-dashboard",
+      title: "Workforce Management Dashboard",
+      description: "Excel-based workforce management dashboard for tracking staffing, schedules, and operational KPIs.",
+      tools: "Excel",
+      fileName: "WorkForceManagementDashboard.xlsx",
+      downloadUrl: "/projects/WorkForceManagementDashboard.xlsx",
+    },
   ];
 
   const [projects, setProjects] = useState<Project[]>(() => {
     const saved = localStorage.getItem("portfolio-projects");
-    return saved ? JSON.parse(saved) : defaultProjects;
+    const parsed: Project[] = saved ? JSON.parse(saved) : [];
+    const merged = [...parsed];
+    defaultProjects.forEach((d) => {
+      if (!merged.some((p) => p.id === d.id)) merged.unshift(d);
+    });
+    return merged.length ? merged : defaultProjects;
   });
   const [showForm, setShowForm] = useState(false);
   const [dragOver, setDragOver] = useState(false);
