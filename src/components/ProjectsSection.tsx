@@ -26,6 +26,14 @@ const ProjectsSection = () => {
       fileName: "FrankCarsPh.pbix",
       downloadUrl: "/projects/FrankCarsPh.pbix",
     },
+    {
+      id: "default-wfm-dashboard",
+      title: "Workforce Management Dashboard",
+      description: "Excel-based workforce management dashboard for tracking staffing, schedules, and operational KPIs.",
+      tools: "Excel",
+      fileName: "WorkForceManagementDashboard.xlsx",
+      downloadUrl: "/projects/WorkForceManagementDashboard.xlsx",
+    },
   ];
 
   const [projects, setProjects] = useState<Project[]>(() => {
