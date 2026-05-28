@@ -38,7 +38,12 @@ const ProjectsSection = () => {
 
   const [projects, setProjects] = useState<Project[]>(() => {
     const saved = localStorage.getItem("portfolio-projects");
-    return saved ? JSON.parse(saved) : defaultProjects;
+    const parsed: Project[] = saved ? JSON.parse(saved) : [];
+    const merged = [...parsed];
+    defaultProjects.forEach((d) => {
+      if (!merged.some((p) => p.id === d.id)) merged.unshift(d);
+    });
+    return merged.length ? merged : defaultProjects;
   });
   const [showForm, setShowForm] = useState(false);
   const [dragOver, setDragOver] = useState(false);
