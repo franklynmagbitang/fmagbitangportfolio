@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
-import { Plus, Upload, X, FileText, Image, BarChart3, Trash2, Download } from "lucide-react";
+import { Upload, X, FileText, Image, BarChart3, Trash2, Download } from "lucide-react";
 
 interface Project {
   id: string;
@@ -120,13 +120,6 @@ const ProjectsSection = () => {
               <h2 className="text-3xl md:text-4xl font-bold gradient-text">Projects</h2>
               <div className="w-20 h-1 bg-primary rounded mt-4" />
             </div>
-            <button
-              onClick={() => setShowForm(!showForm)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-all glow-border"
-            >
-              <Plus className="w-4 h-4" />
-              Add Project
-            </button>
           </div>
 
           {/* Upload form */}
