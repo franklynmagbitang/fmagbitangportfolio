@@ -34,6 +34,15 @@ const ProjectsSection = () => {
       fileName: "WorkForceManagementDashboard.xlsx",
       downloadUrl: "/projects/WorkForceManagementDashboard.xlsx",
     },
+    {
+      id: "default-ops-performance-intelligence",
+      title: "Operations Performance Intelligence Dashboard",
+      description:
+        "The Operations Performance Intelligence Dashboard delivers an end-to-end view of workforce performance by connecting operational efficiency, employee productivity, leadership effectiveness, and customer experience into a single analytics platform. From the Executive Overview to detailed Agent and Team Leader Analytics, the dashboard empowers organizations to move beyond reporting and toward proactive workforce optimization, enabling leaders to make faster, smarter, and more impactful business decisions.",
+      tools: "Power BI",
+      fileName: "Operations_Performance_Intelligence_Dashboard.pbix",
+      downloadUrl: "/projects/Operations_Performance_Intelligence_Dashboard.pbix",
+    },
   ];
 
   const [projects, setProjects] = useState<Project[]>(() => {
