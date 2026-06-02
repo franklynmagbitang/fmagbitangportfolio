@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
-import { Plus, Upload, X, FileText, Image, Award, Trash2, Download } from "lucide-react";
+import { Upload, X, FileText, Image, Award, Trash2, Download } from "lucide-react";
 
 interface Certificate {
   id: string;
