@@ -43,6 +43,15 @@ const ProjectsSection = () => {
       fileName: "Operations_Performance_Intelligence_Dashboard.pbix",
       downloadUrl: "/projects/Operations_Performance_Intelligence_Dashboard.pbix",
     },
+    {
+      id: "default-ops-performance-intelligence-tableau",
+      title: "Operations Performance Intelligence Dashboard (Tableau)",
+      description:
+        "Tableau version of the Operations Performance Intelligence Dashboard, providing an end-to-end view of workforce performance across operational efficiency, employee productivity, leadership effectiveness, and customer experience in a single analytics platform.",
+      tools: "Tableau",
+      fileName: "Operations_Performance_Intelligence_Dashboard.twbx",
+      downloadUrl: "/projects/Operations_Performance_Intelligence_Dashboard.twbx",
+    },
   ];
 
   const [projects, setProjects] = useState<Project[]>(() => {
