@@ -6,7 +6,7 @@ const categories = [
   {
     icon: Database,
     title: "Data Tools",
-    skills: ["Excel (Advanced)", "Power BI", "Google Sheets", "Zendesk Explore"],
+    skills: ["Excel (Advanced)", "Power BI", "Tableau", "Google Sheets", "Zendesk Explore"],
   },
   {
     icon: Brain,
