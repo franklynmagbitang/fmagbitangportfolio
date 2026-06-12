@@ -26,6 +26,14 @@ const CertificatesSection = () => {
       fileName: "IBM_Dev_Day_Bob_Edition_Certificate_Franklyn_Magbitang.pdf",
       downloadUrl: "/certificates/IBM_Dev_Day_Bob_Edition_Certificate_Franklyn_Magbitang.pdf",
     },
+    {
+      id: "default-mindluster-excel",
+      title: "Excel Certificate",
+      description: "Certificate of completion for the Excel course from Mindluster.",
+      issuer: "Mindluster",
+      fileName: "Mindluster_EXCELCertificate.pdf",
+      downloadUrl: "/certificates/Mindluster_EXCELCertificate.pdf",
+    },
   ];
 
   const [certificates, setCertificates] = useState<Certificate[]>(() => {
@@ -33,10 +41,11 @@ const CertificatesSection = () => {
     if (!saved) return defaultCertificates;
     const parsed: Certificate[] = JSON.parse(saved);
     // Ensure default IBM certificate is always present
-    if (!parsed.find((c) => c.id === "default-ibm-dev-day-bob")) {
-      return [...defaultCertificates, ...parsed];
-    }
-    return parsed;
+    const merged = [...parsed];
+    defaultCertificates.forEach((d) => {
+      if (!merged.some((c) => c.id === d.id)) merged.unshift(d);
+    });
+    return merged;
   });
   const [showForm, setShowForm] = useState(false);
   const [dragOver, setDragOver] = useState(false);
