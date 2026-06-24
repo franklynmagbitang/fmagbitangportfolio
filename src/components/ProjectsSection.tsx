@@ -44,6 +44,15 @@ const ProjectsSection = () => {
       downloadUrl: "/projects/WorkForceManagementDashboard.xlsx",
     },
     {
+      id: "default-ops-performance-intelligence",
+      title: "Operations Performance Intelligence Dashboard",
+      description:
+        "The Operations Performance Intelligence Dashboard delivers an end-to-end view of workforce performance by connecting operational efficiency, employee productivity, leadership effectiveness, and customer experience into a single analytics platform. From the Executive Overview to detailed Agent and Team Leader Analytics, the dashboard empowers organizations to move beyond reporting and toward proactive workforce optimization, enabling leaders to make faster, smarter, and more impactful business decisions.",
+      tools: "Power BI",
+      fileName: "Operations_Performance_Intelligence_Dashboard.pbix",
+      downloadUrl: "/projects/Operations_Performance_Intelligence_Dashboard.pbix",
+    },
+    {
       id: "default-ops-performance-intelligence-tableau",
       title: "Operations Performance Intelligence Dashboard (Tableau)",
       description:
@@ -52,25 +61,24 @@ const ProjectsSection = () => {
       fileName: "Operations_Performance_Intelligence_Dashboard.twbx",
       downloadUrl: "/projects/Operations_Performance_Intelligence_Dashboard.twbx",
     },
+    {
+      id: "default-ops-performance-intelligence-v2",
+      title: "Operations Performance Intelligence Dashboard (v2)",
+      description:
+        "An updated Power BI version of the Operations Performance Intelligence Dashboard, delivering an end-to-end view of workforce performance by connecting operational efficiency, employee productivity, leadership effectiveness, and customer experience into a single analytics platform.",
+      tools: "Power BI",
+      fileName: "Operations_Performance_Intelligence_Dashboard.pbix-2.pbix",
+      downloadUrl: "/projects/Operations_Performance_Intelligence_Dashboard.pbix-2.pbix",
+    },
   ];
-
-  // IDs of removed duplicate projects to clean up from localStorage
-  const removedProjectIds = new Set([
-    "default-ops-performance-intelligence",
-    "default-ops-performance-intelligence-v2",
-  ]);
 
   const [projects, setProjects] = useState<Project[]>(() => {
     const saved = localStorage.getItem("portfolio-projects");
     const parsed: Project[] = saved ? JSON.parse(saved) : [];
-    const cleaned = parsed.filter((p) => !removedProjectIds.has(p.id));
-    const merged = [...cleaned];
+    const merged = [...parsed];
     defaultProjects.forEach((d) => {
       if (!merged.some((p) => p.id === d.id)) merged.unshift(d);
     });
-    if (saved && cleaned.length !== parsed.length) {
-      localStorage.setItem("portfolio-projects", JSON.stringify(cleaned));
-    }
     return merged.length ? merged : defaultProjects;
   });
   const [showForm, setShowForm] = useState(false);
