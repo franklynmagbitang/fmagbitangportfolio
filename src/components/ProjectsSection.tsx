@@ -48,7 +48,11 @@ const ProjectsSection = () => {
   const [projects, setProjects] = useState<Project[]>(() => {
     const saved = localStorage.getItem("portfolio-projects");
     const parsed: Project[] = saved ? JSON.parse(saved) : [];
-    const merged = [...parsed];
+    const removedIds = new Set([
+      "default-ops-performance-intelligence",
+      "default-ops-performance-intelligence-v2",
+    ]);
+    const merged = parsed.filter((p) => !removedIds.has(p.id));
     defaultProjects.forEach((d) => {
       if (!merged.some((p) => p.id === d.id)) merged.unshift(d);
     });
