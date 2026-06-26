@@ -35,15 +35,6 @@ const ProjectsSection = () => {
       downloadUrl: "/projects/WorkForceManagementDashboard.xlsx",
     },
     {
-      id: "default-ops-performance-intelligence",
-      title: "Operations Performance Intelligence Dashboard",
-      description:
-        "The Operations Performance Intelligence Dashboard delivers an end-to-end view of workforce performance by connecting operational efficiency, employee productivity, leadership effectiveness, and customer experience into a single analytics platform. From the Executive Overview to detailed Agent and Team Leader Analytics, the dashboard empowers organizations to move beyond reporting and toward proactive workforce optimization, enabling leaders to make faster, smarter, and more impactful business decisions.",
-      tools: "Power BI",
-      fileName: "Operations_Performance_Intelligence_Dashboard.pbix",
-      downloadUrl: "/projects/Operations_Performance_Intelligence_Dashboard.pbix",
-    },
-    {
       id: "default-ops-performance-intelligence-tableau",
       title: "Operations Performance Intelligence Dashboard (Tableau)",
       description:
@@ -51,15 +42,6 @@ const ProjectsSection = () => {
       tools: "Tableau",
       fileName: "Operations_Performance_Intelligence_Dashboard.twbx",
       downloadUrl: "/projects/Operations_Performance_Intelligence_Dashboard.twbx",
-    },
-    {
-      id: "default-ops-performance-intelligence-v2",
-      title: "Operations Performance Intelligence Dashboard (v2)",
-      description:
-        "An updated Power BI version of the Operations Performance Intelligence Dashboard, delivering an end-to-end view of workforce performance by connecting operational efficiency, employee productivity, leadership effectiveness, and customer experience into a single analytics platform.",
-      tools: "Power BI",
-      fileName: "Operations_Performance_Intelligence_Dashboard.pbix-2.pbix",
-      downloadUrl: "/projects/Operations_Performance_Intelligence_Dashboard.pbix-2.pbix",
     },
   ];
 
