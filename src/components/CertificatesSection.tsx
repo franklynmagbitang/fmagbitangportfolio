@@ -34,6 +34,14 @@ const CertificatesSection = () => {
       fileName: "Mindluster_EXCELCertificate.pdf",
       downloadUrl: "/certificates/Mindluster_EXCELCertificate.pdf",
     },
+    {
+      id: "default-professional-gen-ai-powerbi-excel",
+      title: "Professional Gen A.I., Power BI & Excel",
+      description: "Certificate of completion for the Professional Gen A.I. with Power BI and Excel course.",
+      issuer: "Udemy",
+      fileName: "Professional_Gen_AI_PowerBI_Excel_Certificate.pdf",
+      downloadUrl: "/certificates/Professional_Gen_AI_PowerBI_Excel_Certificate.pdf",
+    },
   ];
 
   const [certificates, setCertificates] = useState<Certificate[]>(() => {
